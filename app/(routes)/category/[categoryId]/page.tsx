@@ -33,7 +33,7 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
   const Sizes = await getSizes();
   const Colors = await getColors();
   const Category = await getCategory(params.categoryId);
-
+  if(typeof Category.billboard !== "object") return null
   return (
     <div className="bg-white ">
       <Container>

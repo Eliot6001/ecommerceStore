@@ -17,7 +17,7 @@ interface ProductPageProps {
 const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
   const getProductData = await getProduct(params.productId);
   const suggestedProducts = await getProducts({
-    categoryId: getProductData?.Category?.id,
+    categoryId: getProductData[0]?.Category?.id,
   });
   return (
   <div className="bg-white">
@@ -25,16 +25,15 @@ const ProductPage: React.FC<ProductPageProps> = async ({ params }) => {
       <div className="px-4 py-10 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
           <div>
-            <Gallery images={getProductData.images}/>
+            <Gallery images={getProductData[0].images}/>
           </div>
           <div className="mt-10 px-4 sm:mt-16 sm:px-0 lg:mt-0">
-            <Info data={getProductData}/>
+            <Info data={getProductData[0]}/>
           </div>
         </div>
         <hr className="my-10"/>
-        <ProductList title="Related Items" items={suggestedProducts}>
-          
-        </ProductList>
+        <ProductList title="Related Items" items={suggestedProducts}/>
+  
       </div>
     </Container>
     </div>);

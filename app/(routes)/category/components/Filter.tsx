@@ -4,9 +4,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import Button from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { Color, Size } from "@/types";
 
 interface FilterProps {
-  data: ("Color" | "Size")[];
+  data: (Color | Size)[];
   name: string;
   valueKey: string;
 }

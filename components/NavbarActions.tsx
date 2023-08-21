@@ -3,10 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "./ui/Button";
 import {
-  ShoppingBag,
-  ShoppingBagIcon,
   ShoppingBasket,
-  ShoppingCartIcon,
 } from "lucide-react";
 import useCart from "@/hooks/useCart";
 

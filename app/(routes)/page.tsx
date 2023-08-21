@@ -10,6 +10,7 @@ export const revalidate = 0;
 const HelloStore = async () => {
   const billboard = await getBillboard("504650cf-9d71-40a1-8b75-97989aa6da33");
   const Products = await getProducts({ isFeatured: true });
+  if(typeof billboard !== 'object') return null;
   return (
     <Container>
       <div className="space-y-10 pb-10">

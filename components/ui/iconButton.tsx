@@ -3,12 +3,12 @@ import { cn } from "@/lib/utils";
 interface iconButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
   icon: React.ReactElement;
-  className: string;
+  className?: string;
 }
 const iconButton: React.FC<iconButtonProps> = ({
   onClick,
   icon,
-  className,
+  className
 }) => {
   return (
     <button

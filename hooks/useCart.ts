@@ -3,7 +3,7 @@ import { persist, createJSONStorage } from "zustand/middleware";
 import { Product } from "@/types";
 import { toast } from "react-hot-toast";
 
-interface CartStore {
+export interface CartStore {
   items: Product[];
   addItem: (data: Product) => void;
   removeItem: (id: string) => void;
@@ -13,7 +13,7 @@ interface CartStore {
 // JSONStrong + Persist in order to keep it
 // in Local Storage
 const useCart = create(
-  persist(
+  persist<CartStore>(
     (set, get) => ({
       items: [],
       addItem: (data: Product) => {

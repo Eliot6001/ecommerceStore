@@ -4,12 +4,12 @@ import { useSearchParams } from "next/navigation";
 import {useEffect} from 'react'
 import Button from "@/components/ui/Button";
 import Currency from "@/components/ui/Currency";
-import useCart from "@/hooks/useCart";
+import useCart,{CartStore} from "@/hooks/useCart";
 import { toast } from "react-hot-toast";
 
 const Summary = () => {
-  const items = useCart((state: any) => state.items);
-  const removeAll = useCart((state: any) => state.removeAll);
+  const items = useCart((state) => state.items);
+  const removeAll = useCart((state) => state.removeAll);
   const isEmpty = items.length === 0;
   const searchParams = useSearchParams();
   useEffect(() => {
@@ -22,8 +22,8 @@ const Summary = () => {
           
       }
   }, [searchParams, removeAll]);
-  const totalPrice = items.reduce((_, item) => {
-    return _ + Number(item.price);
+  const totalPrice = items.reduce((accumulator: number, currentItem: { price: string; }) => {
+    return accumulator + Number(currentItem.price);
   }, 0);
   const onCheckOut = async () => {
     
@@ -41,7 +41,7 @@ const Summary = () => {
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t border-gray-200 pt-4">
           <div className="text-base font-medium text-gray-900">Order total</div>
-          {items.length !== 0 && <Currency value={totalPrice} />}
+          {items.length !== 0 && <Currency value={String(totalPrice)} />}
         </div>
       </div>
       <Button className="w-full mt-6" disabled={isEmpty} onClick={onCheckOut} >

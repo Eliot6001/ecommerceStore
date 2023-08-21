@@ -5,7 +5,7 @@ import Modal from "./modal";
 import Gallery from "./Gallery";
 import Info from "./Info";
 
-const previewModal = () => {
+const PreviewModal = () => {
   const previewModal = usePreviewModal();
   const product = usePreviewModal((state) => state.data);
 
@@ -25,4 +25,4 @@ const previewModal = () => {
   );
 };
 
-export default previewModal;
+export default PreviewModal;
