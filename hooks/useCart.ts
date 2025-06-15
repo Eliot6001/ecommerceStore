@@ -35,7 +35,9 @@ const useCart = create(
     }),
     {
       name: "cart-storage", // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => localStorage), // (optional) by default, 'localStorage' is used
+     storage: typeof window !== "undefined"
+    ? createJSONStorage(() => localStorage)
+    : undefined,// (optional) by default, 'localStorage' is used
     }
   )
 );

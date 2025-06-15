@@ -6,8 +6,9 @@ import Container from '@/components/ui/Container'
 import { getCategories } from '@/actions/getCategories'
 import NavbarActions from '@/components/NavbarActions'
 
-const NavBar = async () => {
+const NavBar = async (): Promise<JSX.Element> => {
   const categories = await getCategories();
+
   return (
     <div className="border-b">
         <Container>
