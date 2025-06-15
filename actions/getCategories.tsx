@@ -1,6 +1,6 @@
 import { Category } from "@/types";
 
-const baseURL = process.env.API_URL || "http://localhost:3000";
+const baseURL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 const URL = `${baseURL}/categories`;
 
 export const getCategories = async (): Promise<Category[]> => {
