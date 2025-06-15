@@ -15,16 +15,17 @@ export const metadata: Metadata = {
   title: 'Store app',
   description: 'A Shopper\'s heaven',
 }
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const navbar = await Navbar();
   return (
     <html lang="en">
       <body>
         <ToastProvider/>
-          <Navbar/>
+          {navbar}
           {children}
           <ModalProvider/>
           <Footer/>
